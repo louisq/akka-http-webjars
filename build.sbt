@@ -1,7 +1,16 @@
-organization in ThisBuild := "com.thoughtworks.akka-http-webjars"
+lazy val root = (project in file(".")).
+  settings(
+    inThisBuild(List(
+      organization        := "com.querel",
+      scalaVersion        := "2.12.3",
+      crossScalaVersions  := Seq("2.11.11", "2.12.3"),
+      version             := "1.0.0-SNAPSHOT"
+    )),
 
-crossScalaVersions in ThisBuild := Seq("2.10.6", "2.11.8")
+    name := "akka-http-webjars",
 
-libraryDependencies += "org.webjars" % "webjars-locator" % "0.32"
-
-libraryDependencies += "com.typesafe.akka" %% "akka-http-experimental" % "2.0.4"
+    libraryDependencies ++= Seq(
+      "org.webjars" % "webjars-locator" % "0.32-1",
+      "com.typesafe.akka" %% "akka-http" % "10.0.9"
+    )
+  )
